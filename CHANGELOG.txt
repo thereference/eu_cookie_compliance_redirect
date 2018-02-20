@@ -1,0 +1,3 @@
+EU Cookie Compliance Redirect, 2018-02-20
+-----------------------------------------
+- Initial release
