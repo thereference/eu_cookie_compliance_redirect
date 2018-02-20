@@ -1,3 +1,4 @@
 name = EU cookie compliance redirect
 description = Redirects user to delete cookies or accept cookies.
 core = 7.x
+dependencies[] = eu_cookie_compliance
