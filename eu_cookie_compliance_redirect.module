@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ *
+ *
+ * @return array
+ */
+function eu_cookie_compliance_redirect_menu(){
+
+  $items = [];
+
+  $items['cookie/delete'] = array(
+    'title' => t('Delete popup'),
+    'page callback' => 'eu_cookie_compliance_redirect_deny',
+    'access callback' => TRUE,
+    'menu_name' => ''
+  );
+
+  $items['cookie/accept'] = array(
+    'title' => t('Accept popup'),
+    'page callback' => 'eu_cookie_compliance_redirect_accept',
+    'access callback' => TRUE,
+    'menu_name' => ''
+  );
+
+  return $items;
+}
+
+/**
+ * Callback that sets the cookie-agreed value to 'not accepted'.
+ */
+function eu_cookie_compliance_redirect_deny(){
+  // Cookie-agreed value 0 means the user denies the eu_cookie_compliance popup.
+  setcookie('cookie-agreed',0,time() + (86400 * 365),'/');
+  drupal_goto();
+}
+
+/**
+ * Callback that sets the cookie-agreed value to 'accepted'.
+ */
+function eu_cookie_compliance_redirect_accept(){
+  // Cookie-agreed value 2 means the user accepts the eu_cookie_compliance popup.
+  setcookie('cookie-agreed',2,time() + (86400 * 365),'/');
+  drupal_goto();
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *  Add jQuery Cookie library to the entire site.
+ *
+ * @param $vars
+ */
+function eu_cookie_compliance_redirect_preprocess_page(&$vars){
+  drupal_add_library('system', 'jquery.cookie');
+}
