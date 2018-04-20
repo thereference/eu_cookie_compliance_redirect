@@ -1,4 +1,12 @@
 <?php
+/**
+ * @file
+ * EU cookie compliance redirect primary module file.
+ *
+ * This module will provide the possibility to accept or deny the cookies from a separate page.
+ *
+ * Author: Frederik Van Hooghten
+ */
 
 /**
  * Implements hook_menu().
